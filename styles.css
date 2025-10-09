@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   user-select: none;
 }
@@ -25,6 +27,15 @@ body {
   font-size: 40px;
 }
 
+.high-score {
+  position: absolute;
+  font-size: 3vmin;
+  right: 1vmin;
+  top: 5vmin;
+  margin-right: 10%;
+  font-size: 40px;
+}
+
 .start-screen {
   position: absolute;
   font-size: 5vmin;
@@ -42,7 +53,7 @@ body {
   position: absolute;
   width: 300%;
   bottom: 0;
-  left: calc(var(--left) * 1%)
+  left: calc(var(--left) * 1%);
 }
 
 .dino {

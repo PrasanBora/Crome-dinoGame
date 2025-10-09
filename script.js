@@ -8,6 +8,7 @@ const SPEED_SCALE_INCREASE = 0.00001
 
 const worldElem = document.querySelector("[data-world]")
 const scoreElem = document.querySelector("[data-score]")
+const highScoreElem = document.querySelector("[data-high-score]")
 const startScreenElem = document.querySelector("[data-start-screen]")
 
 setPixelToWorldScale()
@@ -75,7 +76,25 @@ function handleLose() {
   setTimeout(() => {
     document.addEventListener("keydown", handleStart, { once: true })
     startScreenElem.classList.remove("hide")
+    const highScore = getHighScore();
+    if(score > highScore) {
+      saveHighScore(score)
+      updateHighScore()
+    }
   }, 100)
+}
+
+function getHighScore(){
+  return parseFloat(localStorage.getItem("dino_highscore_v1")) || 0
+}
+
+function saveHighScore(score){
+  localStorage.setItem("dino_highscore_v1",Math.floor(score))
+}
+
+function updateHighScore(){
+  const highScore = getHighScore();
+  highScoreElem.textContent = Math.floor(highScore)
 }
 
 function setPixelToWorldScale() {
